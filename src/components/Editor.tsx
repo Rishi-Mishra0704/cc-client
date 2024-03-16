@@ -119,7 +119,6 @@ const CodeEditor: React.FC<EditorProps> = ({ fileContent, fileExtension }) => {
             fontSize={16}
             value={code !== "" ? code : fileContent}
             onChange={(newCode) => {
-              // Send code changes to WebSocket server
               setCode(newCode);
               if (ws.current && ws.current.readyState === WebSocket.OPEN) {
                 const message = {
