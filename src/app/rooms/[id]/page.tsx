@@ -4,7 +4,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import CodeEditor from "@/components/Editor";
 import FileFolder from "@/components/FileFolder";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Video from "@/components/Video";
 
 export default function Page() {
   // State to hold the file content
@@ -37,9 +36,6 @@ export default function Page() {
                 fileExtension={fileExtension}
                 className="w-100" 
               />
-            </Col>
-            <Col sm={3}>
-              <Video />
             </Col>
           </Row>
         </Col>
