@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import { redirect } from 'next/navigation'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../globals.css";
 
@@ -29,7 +30,7 @@ export default function LoginPage() {
       if (response.ok) {
         const responseData = await response.json();
         console.log("Registration successful:", responseData);
-        // Optionally, you can redirect the user or show a success message here
+        redirect(`/rooms/create`)
       } else {
         console.error("Registration failed:", response.statusText);
         // Optionally, handle errors and show an error message to the user

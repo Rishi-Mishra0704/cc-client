@@ -1,14 +1,17 @@
 "use client"
+import { useRouter } from 'next/navigation'
 import React, { useState, useEffect } from 'react';
 
 const CreateRoomPage = () => {
   const [roomName, setRoomName] = useState('');
   const [slug, setSlug] = useState('');
 
+  const router = useRouter()
+
   const generateSlug = () => {
     const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 8; i++) {
       result += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return result;
@@ -33,6 +36,7 @@ const CreateRoomPage = () => {
       if (response.ok) {
         const responseData = await response.json();
         console.log('Room created successfully:', responseData);
+        router.push(`/rooms/${slug}`)
       } else {
         console.error('Failed to create room:', response.statusText);
       }
