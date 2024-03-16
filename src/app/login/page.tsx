@@ -2,22 +2,18 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./globals.css";
+import "../globals.css";
 
-export default function RegisterPage() {
-  // State variables for form fields
+export default function LoginPage() {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   // Function to handle form submission
   const handleSubmit = async (e:any) => {
     e.preventDefault();
 
-    // Create a data object to send in the request body
     const data = {
       username,
-      email,
       password,
     };
 
@@ -33,17 +29,20 @@ export default function RegisterPage() {
       if (response.ok) {
         const responseData = await response.json();
         console.log("Registration successful:", responseData);
+        // Optionally, you can redirect the user or show a success message here
       } else {
         console.error("Registration failed:", response.statusText);
+        // Optionally, handle errors and show an error message to the user
       }
     } catch (error) {
       console.error("Error during registration:", error);
+      // Handle network errors or other exceptions here
     }
   };
 
   return (
     <Container className="mt-4 body">
-      <h1 className="form-title">Register</h1>
+      <h1 className="form-title">Login</h1>
       <Form onSubmit={handleSubmit} className="registration-form">
         <Form.Group controlId="formUsername">
           <Form.Label>Username</Form.Label>
@@ -52,16 +51,6 @@ export default function RegisterPage() {
             placeholder="Enter username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
 
@@ -76,7 +65,7 @@ export default function RegisterPage() {
         </Form.Group>
 
         <Button variant="primary" type="submit">
-          Register
+          Login
         </Button>
       </Form>
     </Container>
